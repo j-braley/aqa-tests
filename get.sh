@@ -610,11 +610,12 @@ testJavaVersion()
 {
 	# use environment variable TEST_JDK_HOME to run java -version
 	if [ "$TEST_JDK_HOME" = "" ]; then
-		TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
+		# TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
+		TEST_JDK_HOME=/cygdrive/d/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java
 	fi
 	_java=${TEST_JDK_HOME}/bin/java.exe
 	echo "Evaluating ${_java} path...."
-	eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+	# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
