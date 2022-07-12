@@ -613,8 +613,8 @@ testJavaVersion()
 		TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
 	fi
 	_java=${TEST_JDK_HOME}/bin/java.exe
-	# echo "Evaluating ${_java} path...."
-	# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+	echo "Evaluating ${_java} path...."
+	eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
