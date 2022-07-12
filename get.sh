@@ -609,11 +609,14 @@ getFunctionalTestMaterial()
 testJavaVersion()
 {
 	# use environment variable TEST_JDK_HOME to run java -version
-	if [ "$TEST_JDK_HOME" = "" ]; then
-		# TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
-		TEST_JDK_HOME=/cygdrive/d/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java
-	fi
-	_java=${TEST_JDK_HOME}/bin/java.exe
+	echo "$TEST_JDK_HOME"
+	# if [ "$TEST_JDK_HOME" = "" ]; then
+	# 	# TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
+	# 	TEST_JDK_HOME=/cygdrive/d/a/aqafer/aqafer/openjdkbinary/j2sdk-image
+	# fi
+	echo "$TEST_JDK_HOME"
+	TEST_JDK_HOME=/cygdrive/d/a/aqafer/aqafer/openjdkbinary/j2sdk-image
+	_java=${TEST_JDK_HOME}/bin/java
 	echo "Evaluating ${_java} path...."
 	# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
