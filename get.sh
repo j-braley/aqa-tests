@@ -402,7 +402,6 @@ getBinaryOpenjdk()
 						mv $jar_dir_name ../j2re-image
 					elif [[ "$jar_dir_name" =~ jdk* ]] && [ "$jar_dir_name" != "j2sdk-image" ]; then
 						eval "ls -l $jar_dir_name"
-						eval "ls -l ../j2sdk-image"
 						mv $jar_dir_name ../j2sdk-image
 					# The following only needed if openj9 has a different image name convention
 					elif [ "$jar_dir_name" != "j2sdk-image" ]; then
