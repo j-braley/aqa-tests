@@ -382,9 +382,10 @@ getBinaryOpenjdk()
 				fi
 				echo "Uncompressing file: $jar_name ..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
-					echo "Uncompressing file......."
 					eval "ls -l $jar_name"
+					echo "Proceeding uncompressing file......."
 					unzip -q $jar_name -d ./tmp
+					echo "extract dir"
 					eval "ls -l $extract_dir"
 
 				elif [[ $jar_name == *.pax* ]]; then
@@ -413,6 +414,8 @@ getBinaryOpenjdk()
 					fi
 				elif [ "$len" -gt 1 ]; then
 					mv ../tmp ../j2sdk-image
+					echo "Eval moved dir perms..."
+					eval "ls -l ../j2sdk-image"
 				fi
 				# echo "Final eval..."
 				# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
@@ -612,7 +615,7 @@ testJavaVersion()
 	fi
 	_java=${TEST_JDK_HOME}/bin/java.exe
 	echo "Evaluating ${_java} path...."
-	eval "ls -l D:a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+	eval "ls -l D:\\a\\aqafer\\aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
