@@ -364,6 +364,7 @@ getBinaryOpenjdk()
 				fi
 				echo "Uncompressing $jar_name over $extract_dir..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
+					echo "Uncompressing file......."
 					unzip -q $jar_name -d $extract_dir
 				else
 					# some debug-image tar has parent folder ... strip it
@@ -400,6 +401,8 @@ getBinaryOpenjdk()
 					elif [[ "$jar_dir_name" =~ jre* ]] && [ "$jar_dir_name" != "j2re-image" ]; then
 						mv $jar_dir_name ../j2re-image
 					elif [[ "$jar_dir_name" =~ jdk* ]] && [ "$jar_dir_name" != "j2sdk-image" ]; then
+						eval "ls -l $jar_dir_name"
+						eval "ls -l ../j2sdk-image"
 						mv $jar_dir_name ../j2sdk-image
 					# The following only needed if openj9 has a different image name convention
 					elif [ "$jar_dir_name" != "j2sdk-image" ]; then
@@ -408,6 +411,9 @@ getBinaryOpenjdk()
 				elif [ "$len" -gt 1 ]; then
 					mv ../tmp ../j2sdk-image
 				fi
+				echo "Final eval..."
+				eval "ls -l D:\\a\\aqafer\\aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+				
 				cd $SDKDIR/openjdkbinary
 			fi
 		done
@@ -601,7 +607,8 @@ testJavaVersion()
 	if [ "$TEST_JDK_HOME" = "" ]; then
 		TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
 	fi
-	_java=${TEST_JDK_HOME}/bin/java
+	_java=${TEST_JDK_HOME}/bin/java.exe
+	eval "ls -l ${_java}"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
