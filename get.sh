@@ -364,10 +364,8 @@ getBinaryOpenjdk()
 				fi
 				echo "Uncompressing $jar_name over $extract_dir..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
-					echo "Uncompressing file......."
-					eval "ls -l $jar_name"
+					
 					unzip -q $jar_name -d $extract_dir
-					eval "ls -l $extract_dir"
 				else
 					# some debug-image tar has parent folder ... strip it
 					if tar --version 2>&1 | grep GNU 2>&1; then
@@ -384,7 +382,11 @@ getBinaryOpenjdk()
 				fi
 				echo "Uncompressing file: $jar_name ..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
+					echo "Uncompressing file......."
+					eval "ls -l $jar_name"
 					unzip -q $jar_name -d ./tmp
+					eval "ls -l $extract_dir"
+
 				elif [[ $jar_name == *.pax* ]]; then
 					cd ./tmp
 					pax -p xam -rzf ../$jar_name
@@ -609,7 +611,8 @@ testJavaVersion()
 		TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
 	fi
 	_java=${TEST_JDK_HOME}/bin/java.exe
-	eval "ls -l ${_java}"
+	echo "Evaluating ${_java} path...."
+	eval "ls -l D:a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
