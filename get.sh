@@ -410,8 +410,8 @@ getBinaryOpenjdk()
 				elif [ "$len" -gt 1 ]; then
 					mv ../tmp ../j2sdk-image
 				fi
-				echo "Final eval..."
-				eval "ls -l D:\\a\\aqafer\\aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+				# echo "Final eval..."
+				# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 				
 				cd $SDKDIR/openjdkbinary
 			fi
