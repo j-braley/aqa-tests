@@ -406,19 +406,18 @@ getBinaryOpenjdk()
 					elif [[ "$jar_dir_name" =~ jre* ]] && [ "$jar_dir_name" != "j2re-image" ]; then
 						mv $jar_dir_name ../j2re-image
 					elif [[ "$jar_dir_name" =~ jdk* ]] && [ "$jar_dir_name" != "j2sdk-image" ]; then
+						echo "Eval java dir name"
 						eval "ls -l $jar_dir_name"
 						mv $jar_dir_name ../j2sdk-image
+						echo "Eval post - moved dir perms..."
+						eval "ls -l ../j2sdk-image"
 					# The following only needed if openj9 has a different image name convention
 					elif [ "$jar_dir_name" != "j2sdk-image" ]; then
 						mv $jar_dir_name ../j2sdk-image
 					fi
 				elif [ "$len" -gt 1 ]; then
 					mv ../tmp ../j2sdk-image
-					echo "Eval moved dir perms..."
-					eval "ls -l ../j2sdk-image"
 				fi
-				# echo "Final eval..."
-				# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 				
 				cd $SDKDIR/openjdkbinary
 			fi
@@ -614,8 +613,8 @@ testJavaVersion()
 		TEST_JDK_HOME=$SDKDIR/openjdkbinary/j2sdk-image
 	fi
 	_java=${TEST_JDK_HOME}/bin/java.exe
-	echo "Evaluating ${_java} path...."
-	eval "ls -l D:\\a\\aqafer\\aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
+	# echo "Evaluating ${_java} path...."
+	# eval "ls -l D:/a/aqafer/aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
