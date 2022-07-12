@@ -256,6 +256,7 @@ getBinaryOpenjdk()
 	fi
 
 	if [ "${download_url}" != "" ]; then
+		eval "whoami"
 		for file in $download_url
 		do
 			executeCmdWithRetry "${file##*/}" "_ENCODE_FILE_NEW=UNTAGGED curl -OLJSk${CURL_OPTS} ${curl_options} $file"
@@ -357,6 +358,8 @@ getBinaryOpenjdk()
 				fi
 				echo "Uncompressing file: $jar_name ..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
+					echo "Uncompressing beginning...."
+					echo "What is our perms....."
 					unzip -q $jar_name -d ./tmp
 				elif [[ $jar_name == *.pax* ]]; then
 					cd ./tmp
@@ -379,11 +382,19 @@ getBinaryOpenjdk()
 						mv $jar_dir_name ../j2sdk-image
 					# The following only needed if openj9 has a different image name convention
 					elif [ "$jar_dir_name" != "j2sdk-image" ]; then
+						echo "Moving to j2sdk-image elseif cond..."
 						mv $jar_dir_name ../j2sdk-image
+						eval ls -l ../j2sdk
+						eval ls -l ../j2sdk/bin/java.exe
 					fi
 				elif [ "$len" -gt 1 ]; then
+					echo "Moving to j2sdk-image else cond..."
 					mv ../tmp ../j2sdk-image
+					eval "ls -l ../j2sdk"
+					eval "ls -l ../j2sdk/bin/java.exe"
 				fi
+				echo "Final eval..."
+				eval "ls -l $SDKDIR/openjdkbinary/j2sdk/bin/java.exe"
 				cd $SDKDIR/openjdkbinary
 			fi
 		done
