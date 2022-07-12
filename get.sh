@@ -394,7 +394,7 @@ getBinaryOpenjdk()
 					eval "ls -l ../j2sdk/bin/java.exe"
 				fi
 				echo "Final eval..."
-				eval "ls -l $SDKDIR/openjdkbinary/j2sdk/bin/java.exe"
+				eval "ls -l D:\a\aqafer\aqafer/openjdkbinary/j2sdk-image/bin/java.exe"
 				cd $SDKDIR/openjdkbinary
 			fi
 		done
@@ -630,7 +630,7 @@ testJavaVersion()
 	_release=${TEST_JDK_HOME}/release
 	# Code_Coverage use different _java through searching javac for now, following path will be modified after refining files from BUILD
 	if [[ "$CODE_COVERAGE" == "true" ]]; then
-		_java=${TEST_JDK_HOME}/build/bin/java
+		_java=${TEST_JDK_HOME}/build/bin/java.exe
 		_release=${TEST_JDK_HOME}/build/release
 	fi
 	if [ -x ${_java} ]; then
