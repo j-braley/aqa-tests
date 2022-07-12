@@ -365,7 +365,9 @@ getBinaryOpenjdk()
 				echo "Uncompressing $jar_name over $extract_dir..."
 				if [[ $jar_name == *zip ]] || [[ $jar_name == *jar ]]; then
 					echo "Uncompressing file......."
+					eval "ls -l $jar_name"
 					unzip -q $jar_name -d $extract_dir
+					eval "ls -l $extract_dir"
 				else
 					# some debug-image tar has parent folder ... strip it
 					if tar --version 2>&1 | grep GNU 2>&1; then
