@@ -111,6 +111,10 @@ def PLATFORM_MAP = [
         'SPEC' : 'win_x86-64',
         'LABEL' : 'ci.role.test&&hw.arch.x86&&sw.os.windows',
     ],
+    'aarch64_windows' : [
+        'SPEC': 'win_aarch64',
+        'LABEL': 'ci.role.test&&hw.arch.aarch64&&sw.os.windows'
+    ],
 ]
 
 if ( !params.TARGET ) {
